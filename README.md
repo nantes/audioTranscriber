@@ -1,10 +1,10 @@
 # Audio Transcriber
 
-This project is a web application that allows users to upload an audio file, which is then transcribed using the Rev.ai Speech-to-Text API. The transcribed text is saved to a `.txt` file on the server.
+This project is a web application that allows users to upload an audio file, which is then transcribed using the Rev.ai Speech-to-Text API. The transcribed text is saved to a `.txt` file on the server. The application includes a frontend that periodically checks for transcription completion and updates the file accordingly.
 
 ## Features
 
-- **Frontend**: React application for uploading audio files.
+- **Frontend**: React application for uploading audio files with polling to check transcription status.
 - **Backend**: Node.js with Express for handling file uploads and interacting with Rev.ai.
 - **Transcription**: Uses Rev.ai API for converting audio to text.
 - **Webhook**: Configured to receive transcription results.
@@ -100,8 +100,18 @@ This project is a web application that allows users to upload an audio file, whi
 
     This will start both the backend and frontend services. The application will handle ngrok integration internally.
 
+## How It Works
+
+1. **File Upload**: Users upload an audio file through the React frontend.
+2. **Transcription Request**: The backend sends the file to Rev.ai for transcription.
+3. **Polling**: Once the upload is complete and Rev.ai responds, the frontend begins polling every 5 seconds to check if the transcription is complete.
+4. **Webhook**: Rev.ai sends the transcription result to the configured webhook URL.
+5. **Save Transcription**: The backend saves the transcription text into a `.txt` file in the `transcriptions` folder.
+
 ## Notes
 
+- The `transcriptions` folder is where the transcribed text files are saved.
+- The frontend performs polling to check for transcription status updates every 5 seconds.
 - Ensure that Docker is properly installed and running on your system for containerized deployments.
 - The backend listens on port `3000` and the frontend listens on port `8080` by default.
 - The `.env` file is required both for local development and Docker deployment to provide necessary environment variables.
