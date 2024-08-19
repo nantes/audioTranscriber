@@ -1,0 +1,22 @@
+version: '3.9' 
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - REV_AI_TOKEN=${REV_AI_TOKEN}
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/transcriptions:/app/transcriptions
+    depends_on:
+      - frontend
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:8080"

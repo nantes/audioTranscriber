@@ -1,0 +1,65 @@
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .file-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+  }
+  
+  .file-name {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .upload-button, .download-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .upload-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .loading-message {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .download-button {
+    background-color: #28a745;
+  }
+  
