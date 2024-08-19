@@ -12,16 +12,17 @@ const UploadForm = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-
     const allowedTypes = ['audio/mpeg', 'audio/wav', 'audio/mp3', 'audio/x-wav'];
     if (selectedFile && !allowedTypes.includes(selectedFile.type)) {
       setError('Invalid file type. Please upload an audio file (mp3, wav).');
       setFile(null);
       setFileName('');
+      setTranscription(''); // Clear transcription when a new file is selected
     } else {
       setError('');
       setFile(selectedFile);
       setFileName(selectedFile.name);
+      setTranscription(''); // Clear transcription when a new file is selected
     }
   };
 
@@ -84,7 +85,7 @@ const UploadForm = () => {
         className="file-input"
         disabled={loading}
       />
-      {fileName && <p className="file-name">Selected file: {fileName}</p>} {/* Display the file name */}
+      {fileName && <p className="file-name">Selected file: {fileName}</p>}
       {error && <p className="error-message">{error}</p>}
       <button 
         onClick={handleUpload} 
